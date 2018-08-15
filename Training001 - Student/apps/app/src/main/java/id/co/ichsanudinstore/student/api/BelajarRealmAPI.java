@@ -69,6 +69,11 @@ public class BelajarRealmAPI {
         }
     }
 
+    /*
+    * Membuat okHttpClient berguna untuk logging atau melihat status koneksi,
+    * parameter yang dikirimkan dan didapat, allow http / https,
+    * set connection timed out, dll
+    * */
     private static OkHttpClient getOkHhttpClient() {
         OkHttpClient.Builder mBuilder = new OkHttpClient.Builder();
         HttpLoggingInterceptor mHttpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -95,6 +100,9 @@ public class BelajarRealmAPI {
         return mBuilder.build();
     }
 
+    /*
+    * Membuat metode call dengan retrofit yang mengimplementasikan okhttp yang telah dibuat
+    * */
     public static Retrofit getRetrofit(Context context) {
             OkHttpClient mOkHttpClient = BelajarRealmAPI.getOkHhttpClient();
 

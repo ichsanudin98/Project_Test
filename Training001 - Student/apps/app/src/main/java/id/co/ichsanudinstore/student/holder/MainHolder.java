@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import id.co.ichsanudinstore.student.R;
 
+/*
+ * Class yang mengextends ViewHolder dari RecyclerView agar dapat digunakan oleh adapter
+ * */
 public class MainHolder extends RecyclerView.ViewHolder {
 
     public CardView mLayoutParent;

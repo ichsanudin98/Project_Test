@@ -6,11 +6,16 @@ import id.co.ichsanudinstore.student.entity.ModelMigration;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-
+/*
+* Inisialisasi application
+* */
 public class BelajarApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        /*
+        * Konfigurasi realm
+        * */
         Realm.init(this);
         RealmConfiguration mConfiguration = new RealmConfiguration.Builder()
                 .name("belajar_database.realm")

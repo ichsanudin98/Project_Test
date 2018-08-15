@@ -22,6 +22,11 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private OnMainItemClick mListener;
 
+    /*
+     * Membuat constructor di adapter dengan meminta parameter
+     * RealmResults<StudentEntity, Activity dan OnMainItemClick
+     *
+     * */
     public MainAdapter(RealmResults<StudentEntity> mStudents, Activity activity,
                        OnMainItemClick mListener) {
         super();
@@ -30,6 +35,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.mListener = mListener;
     }
 
+    /*
+     * Deklarasi layout per item untuk sebuah list
+     * */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,6 +45,11 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return new MainHolder(view);
     }
 
+
+    /*
+     * Mengambil nilai per item dari list yang dikirimkan oleh constructor
+     * dan untuk set nilai per item dan memberikan aksi semisal berupa click
+     * */
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final StudentEntity mData = mStudents.get(position);
@@ -53,6 +66,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    /*
+     * Memberitahukan recyclerview untuk membuat list dari jumlah banyaknya data
+     * */
     @Override
     public int getItemCount() {
         return mStudents.size();

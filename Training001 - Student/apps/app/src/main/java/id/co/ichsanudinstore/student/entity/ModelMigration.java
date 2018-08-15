@@ -8,6 +8,9 @@ import io.realm.RealmSchema;
 
 public class ModelMigration implements RealmMigration {
 
+    /*
+     * Handling untuk migrasi ketika terjadi perubahan ada schema database
+     * */
     @Override
     public void migrate(@NonNull DynamicRealm realm, long oldVersion, long newVersion) {
         // DynamicRealm exposes an editable schema

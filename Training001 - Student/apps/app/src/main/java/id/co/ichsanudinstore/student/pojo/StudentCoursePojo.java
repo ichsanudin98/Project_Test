@@ -1,5 +1,8 @@
 package id.co.ichsanudinstore.student.pojo;
 
+/*
+* Tempat penyimpanan sementara saat menambahkan course untuk student
+* */
 public class StudentCoursePojo {
     private Long id;
     private String student_nik;

@@ -269,7 +269,7 @@ public class CreateStudentActivity extends AppCompatActivity
         if (mButtonSave.equals(v)) {
             if (isValid()) {
                 /*
-                 * Input value untuk table StudentEntity
+                 * Input value untuk table StudentEntity dan StudentCourseEntity
                  * */
                 mRealm.beginTransaction();
                 StudentEntity mData = new StudentEntity();

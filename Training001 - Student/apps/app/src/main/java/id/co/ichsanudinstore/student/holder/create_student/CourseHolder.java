@@ -8,13 +8,14 @@ import android.widget.TextView;
 
 import id.co.ichsanudinstore.student.R;
 
+/*
+* Class yang mengextends ViewHolder dari RecyclerView agar dapat digunakan oleh adapter
+* */
 public class CourseHolder extends RecyclerView.ViewHolder {
 
     public LinearLayout mLayoutParent;
 
     public TextView mTxvCourse;
-
-    public AppCompatButton mButtonDelete;
 
     public CourseHolder(View itemView) {
         super(itemView);
@@ -22,7 +23,5 @@ public class CourseHolder extends RecyclerView.ViewHolder {
         mLayoutParent = itemView.findViewById(R.id.create_student_course_item);
 
         mTxvCourse = itemView.findViewById(R.id.create_student_course_name_item);
-
-        mButtonDelete = itemView.findViewById(R.id.create_student_course_name_item);
     }
 }

@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 
 import id.co.ichsanudinstore.student.config.Constant;
 
+/*
+* Tempat penyimpanan sementara untuk SharedPreferences
+* */
 public class SharedPrefs {
     private static final transient String TAG = SharedPrefs.class.getSimpleName();
 

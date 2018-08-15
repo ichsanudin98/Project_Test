@@ -9,6 +9,9 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Url;
 
+/*
+* Metode web service serta url dan parameter yang akan dikirimkan
+* */
 public interface BelajarRealmParser {
     @POST
     Call<CourseResponse> crudCourse(@Url String url,
