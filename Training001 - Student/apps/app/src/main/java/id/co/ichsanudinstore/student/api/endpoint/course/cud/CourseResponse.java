@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import id.co.ichsanudinstore.belajarrealm.api.endpoint.GeneralResponse;
+import id.co.ichsanudinstore.student.api.endpoint.GeneralResponse;
 
 public class CourseResponse extends GeneralResponse {
     @SerializedName("DT")

@@ -1,4 +1,4 @@
-package id.co.ichsanudinstore.student.api.endpoint.course;
+package id.co.ichsanudinstore.student.api.endpoint;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

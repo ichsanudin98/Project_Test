@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity
                                             .findFirst();
 
                                     if (mCourse == null) {
-                                        if (!isRequest) {
+                                        /*if (!isRequest) {
                                             try {
                                                 crudCourse = CourseService.sendRequest(MainActivity.this,
                                                         SharedPrefs.getmPreferences(context).getString(Constant.URL.BASE, "") +
@@ -235,6 +235,19 @@ public class MainActivity extends AppCompatActivity
                                             }
                                         } else {
                                             Toast.makeText(context, errorMultipleRequest, Toast.LENGTH_SHORT).show();
+                                        }*/
+
+                                        try {
+                                            mRealm.beginTransaction();
+                                            CourseEntity data = new CourseEntity();
+                                            data.setId(System.currentTimeMillis());
+                                            data.setName(mEdtCourse.getText().toString());
+                                            mRealm.copyToRealmOrUpdate(data);
+                                            mRealm.commitTransaction();
+
+                                            mCourseAdd.dismiss();
+                                        } catch (Exception e) {
+                                            Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
                                         Toast.makeText(MainActivity.this, errorAddCourse, Toast.LENGTH_SHORT).show();
