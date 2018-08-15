@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="main_item_padding">8dp</dimen>
+    <dimen name="main_item_margin">5dp</dimen>
+
+    <dimen name="create_student_course_item_padding">8dp</dimen>
+</resources>

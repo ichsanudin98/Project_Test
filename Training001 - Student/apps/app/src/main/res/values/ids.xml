@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="main_toolbar" type="id" />
+    <item name="main_list" type="id" />
+    <item name="main_add" type="id" />
+
+    <item name="main_student_item" type="id" />
+    <item name="main_name_item" type="id" />
+    <item name="main_nik_item" type="id" />
+    <item name="main_course_item" type="id" />
+
+    <item name="create_toolbar" type="id" />
+    <item name="create_name" type="id" />
+    <item name="create_nik" type="id" />
+    <item name="create_majors" type="id" />
+    <item name="create_course_title" type="id" />
+    <item name="create_course_add_title" type="id" />
+    <item name="create_course_list" type="id" />
+    <item name="create_course_save" type="id" />
+
+    <item name="create_student_course_item" type="id" />
+    <item name="create_student_course_name_item" type="id" />
+</resources>

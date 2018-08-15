@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Belajar Realm</string>
+    <string name="save">Simpan</string>
+    <string name="action_settings">Settings</string>
+    <string name="error_requesting_multiple">Anda sedang melakukan pengiriman data, harap tunggu terlebih dahulu!</string>
+    <string name="error_connection">Tidak dapat terhubung ke server, silahkan coba lagi nanti!</string>
+
+    <string name="hint_name">Nama</string>
+    <string name="hint_nik">NIK</string>
+    <string name="hint_majors">Jurusan</string>
+
+    <string name="opt_add_course">Tambah mata kuliah</string>
+    <string name="opt_add_student">Tambah mahasiswa</string>
+
+    <string name="opt_add_student_course">Pilih mata kuliah</string>
+
+    <string name="title_course">Mata Kuliah</string>
+    <string name="title_course_add">Tambah</string>
+
+    <string name="error_course_available">Mata kuliah telah terdaftar</string>
+</resources>
