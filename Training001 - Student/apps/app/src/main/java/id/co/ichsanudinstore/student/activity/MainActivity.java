@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /*
+     * Deklarasi seluruh variabel dan pemberian fungsi seperti saat edittext sedang dalam mode
+     * pengetikan ataupun aksi pemberian aksi apabila terjadi suatu kontak seperti aksi button click
+     * */
     private void init() {
         context = this.getApplicationContext();
 
@@ -87,6 +91,9 @@ public class MainActivity extends AppCompatActivity
         mButtonAdd.setOnClickListener(this);
 
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        /*
+         * Query hasil dari StudentEntity dengan ditampung data hasil query menjadi list
+         * */
         RealmResults<StudentEntity> mStudents = mRealm.where(StudentEntity.class).findAll();
         mAdapter = new MainAdapter(mStudents, this, this);
         recyclerView = this.findViewById(R.id.main_list);
@@ -237,12 +244,28 @@ public class MainActivity extends AppCompatActivity
                                             Toast.makeText(context, errorMultipleRequest, Toast.LENGTH_SHORT).show();
                                         }*/
 
+                                        /*
+                                        * Input value untuk table CourseEntity dengan nilai id dan nama
+                                        * */
                                         try {
+                                            /*
+                                             * Buka koneksi ke database realm
+                                             * */
                                             mRealm.beginTransaction();
+                                            /*
+                                             * Buat object baru untuk insert kedalam database
+                                             * */
                                             CourseEntity data = new CourseEntity();
                                             data.setId(System.currentTimeMillis());
                                             data.setName(mEdtCourse.getText().toString());
+                                            /*
+                                             * copyToRealmOrUpdate merupakan perintah insert ataupun update kedalam
+                                             * database realm
+                                             * */
                                             mRealm.copyToRealmOrUpdate(data);
+                                            /*
+                                             * commitTransaction sekaligus menutup koneksi database
+                                             * */
                                             mRealm.commitTransaction();
 
                                             mCourseAdd.dismiss();
@@ -271,6 +294,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(int position, String nik) {
+        /*
+         * event click listener setiap item dari list yang di click
+         * */
         Intent create = new Intent(MainActivity.this, CreateStudentActivity.class);
         create.putExtra("type", 1);
         create.putExtra("nik", nik);

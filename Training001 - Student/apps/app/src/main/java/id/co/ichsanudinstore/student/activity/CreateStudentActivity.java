@@ -174,10 +174,16 @@ public class CreateStudentActivity extends AppCompatActivity
             mButtonCourseAdd.setVisibility(View.GONE);
             mButtonSave.setVisibility(View.GONE);
         } else {
+            /*
+             * Query hasil dari StudentCourseEntity dengan ditampung data hasil query menjadi list
+             * */
             RealmResults<StudentCourseEntity> mStudentsCourse = mRealm.where(StudentCourseEntity.class)
                     .equalTo("student_nik", getIntent().getStringExtra("nik"))
                     .findAll();
 
+            /*
+             * Input hasil dari query kedalam list pojo
+             * */
             if (mStudentsCourse.size() != 0) {
                 StudentCoursePojo mStudentCoursePojo;
                 for (StudentCourseEntity mCourse : mStudentsCourse) {
@@ -204,6 +210,9 @@ public class CreateStudentActivity extends AppCompatActivity
         recyclerView.setLayoutManager(mLayoutManager);
     }
 
+    /*
+     * Proses checking validasi dan mandatory untuk insert data
+     * */
     private boolean isValid() {
         if (TextUtils.isEmpty(mEdtName.getText())) {
             mEdtName.setError("Wajib diisi");
@@ -259,6 +268,9 @@ public class CreateStudentActivity extends AppCompatActivity
     public void onClick(View v) {
         if (mButtonSave.equals(v)) {
             if (isValid()) {
+                /*
+                 * Input value untuk table StudentEntity
+                 * */
                 mRealm.beginTransaction();
                 StudentEntity mData = new StudentEntity();
                 mData.setNik(mEdtNIK.getText().toString());
@@ -326,6 +338,10 @@ public class CreateStudentActivity extends AppCompatActivity
                     dialog.cancel();
                 }
             });
+            /*
+             * Query hasil dari CourseEntity dan diambil nilai nama tersebut dan dimasukkan kedalam mCourses
+             * untuk di set kedalam spinner
+             * */
             RealmResults<CourseEntity> mCourses = mRealm.where(CourseEntity.class).findAll();
             if (mCourses.size() != 0) {
                 for (CourseEntity courseEntity : mCourses) {
@@ -346,6 +362,8 @@ public class CreateStudentActivity extends AppCompatActivity
 
     @Override
     public void onClick(int position, long course_id) {
-
+        /*
+         * event click listener setiap item dari list yang di click
+         * */
     }
 }
