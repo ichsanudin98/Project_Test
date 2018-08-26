@@ -27,6 +27,7 @@ import java.io.IOException;
 import id.co.ichsanudinstore.student.R;
 import id.co.ichsanudinstore.student.adapter.MainAdapter;
 import id.co.ichsanudinstore.student.api.endpoint.course.cud.CourseResponse;
+import id.co.ichsanudinstore.student.api.endpoint.course.cud.CourseResponseDetail;
 import id.co.ichsanudinstore.student.api.endpoint.course.cud.CourseService;
 import id.co.ichsanudinstore.student.config.Constant;
 import id.co.ichsanudinstore.student.entity.CourseEntity;
@@ -201,6 +202,35 @@ public class MainActivity extends AppCompatActivity
                                                         null,
                                                         mEdtCourse.getText().toString());
                                                 isRequest = true;
+                                                // sycnchronous
+                                                CourseResponse courseResponse = crudCourse.execute().body();
+                                                if (courseResponse != null) {
+                                                    if (courseResponse.getResponse_code() == 0) {
+                                                        try {
+                                                            for (int i = 0; i < courseResponse.getData().size(); i++) {
+                                                                CourseResponseDetail item = courseResponse.getData().get(i);
+                                                                if (item != null) {
+                                                                    mRealm.beginTransaction();
+                                                                    CourseEntity data = new CourseEntity();
+                                                                    data.setId(item.getCourse_id());
+                                                                    data.setName(item.getCourse_name());
+                                                                    mRealm.copyToRealmOrUpdate(data);
+                                                                    mRealm.commitTransaction();
+                                                                }
+                                                            }
+
+                                                            mCourseAdd.dismiss();
+                                                        } catch (Exception e) {
+                                                            Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(context, courseResponse.getResponse_message(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                } else {
+                                                    Toast.makeText(context, errorConnection, Toast.LENGTH_SHORT).show();
+                                                }
+
+                                                // asynchronous
                                                 crudCourse.enqueue(new Callback<CourseResponse>() {
                                                     @Override
                                                     public void onResponse(@NonNull Call<CourseResponse> call, @NonNull Response<CourseResponse> response) {
@@ -210,12 +240,17 @@ public class MainActivity extends AppCompatActivity
                                                         if (courseResponse != null) {
                                                             if (courseResponse.getResponse_code() == 0) {
                                                                 try {
-                                                                    mRealm.beginTransaction();
-                                                                    CourseEntity data = new CourseEntity();
-                                                                    data.setId(System.currentTimeMillis());
-                                                                    data.setName(mEdtCourse.getText().toString());
-                                                                    mRealm.copyToRealmOrUpdate(data);
-                                                                    mRealm.commitTransaction();
+                                                                    for (int i = 0; i < courseResponse.getData().size(); i++) {
+                                                                        CourseResponseDetail item = courseResponse.getData().get(i);
+                                                                        if (item != null) {
+                                                                            mRealm.beginTransaction();
+                                                                            CourseEntity data = new CourseEntity();
+                                                                            data.setId(item.getCourse_id());
+                                                                            data.setName(item.getCourse_name());
+                                                                            mRealm.copyToRealmOrUpdate(data);
+                                                                            mRealm.commitTransaction();
+                                                                        }
+                                                                    }
 
                                                                     mCourseAdd.dismiss();
                                                                 } catch (Exception e) {
